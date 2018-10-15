@@ -1,0 +1,30 @@
+version: '3.1'
+
+services:
+
+  php:
+    image: drupal:7
+    ports:
+      - 9080:80
+    volumes:
+      - home:/var/www/html
+      # - /var/www/html/modules
+      # - /var/www/html/profiles
+      # - /var/www/html/themes
+      # this takes advantage of the feature in Docker that a new anonymous
+      # volume (which is what we're creating here) will be initialized with the
+      # existing content of the image at the same location
+      # - ./sites:/var/www/html/sites - this created a sites folder in my laptop! So it did work
+      #    but the website was sluggish b/c all the database traffic was from laptop to Azure!!!
+      # - /var/www/html/sites
+    # restart: always
+
+volumes:
+  home:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=10.1.1.13,vers=4,soft,timeo=180,bg,tcp,rw
+      device: :/wwwdata/drupal780
+      # o: addr=10.1.1.13,nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2
+      # device: 10.1.1.13:/docker/volumes/drupal780_home/
