@@ -632,6 +632,7 @@ $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
 
 $conf['mail_system'] = array('default-system' => 'TestingMailSystem');
 $conf['drupal_http_request_fails'] = FALSE;
+$conf['file_temporary_path'] = '/tmp';
 
 $databases = array (
   'default' =>

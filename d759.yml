@@ -6,8 +6,9 @@ services:
     #image: drupal:7
     #image: dtr1.airgility.org/kthomson/drupal:759-01
     image: dtr1.airgility.org/kthomson/drupal:759
+    #image: dtr1.airgility.org/kthomson/drupal:d759-02
     ports:
-      - 9000:80
+      - 9002:80
     volumes:
       - files:/var/www/html/sites/default/files
       # - /var/www/html/modules
